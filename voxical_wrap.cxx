@@ -3009,21 +3009,28 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_Segment2 swig_types[0]
-#define SWIGTYPE_p_allocator_type swig_types[1]
-#define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_difference_type swig_types[3]
-#define SWIGTYPE_p_p_PyObject swig_types[4]
-#define SWIGTYPE_p_size_type swig_types[5]
-#define SWIGTYPE_p_std__allocatorT_Segment2_t swig_types[6]
-#define SWIGTYPE_p_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t swig_types[7]
-#define SWIGTYPE_p_std__invalid_argument swig_types[8]
-#define SWIGTYPE_p_std__vectorT_Segment2_std__allocatorT_Segment2_t_t swig_types[9]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t_t swig_types[10]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[11]
-#define SWIGTYPE_p_value_type swig_types[12]
-static swig_type_info *swig_types[14];
-static swig_module_info swig_module = {swig_types, 13, 0, 0, 0, 0};
+#define SWIGTYPE_p_Point2 swig_types[0]
+#define SWIGTYPE_p_Point3 swig_types[1]
+#define SWIGTYPE_p_Segment2 swig_types[2]
+#define SWIGTYPE_p_Triangle swig_types[3]
+#define SWIGTYPE_p_allocator_type swig_types[4]
+#define SWIGTYPE_p_char swig_types[5]
+#define SWIGTYPE_p_difference_type swig_types[6]
+#define SWIGTYPE_p_p_PyObject swig_types[7]
+#define SWIGTYPE_p_size_type swig_types[8]
+#define SWIGTYPE_p_std__allocatorT_Segment2_t swig_types[9]
+#define SWIGTYPE_p_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t swig_types[10]
+#define SWIGTYPE_p_std__invalid_argument swig_types[11]
+#define SWIGTYPE_p_std__multisetT_Segment2_CompareByYT_0_t_t swig_types[12]
+#define SWIGTYPE_p_std__multisetT_Segment2_CompareByYT_1_t_t swig_types[13]
+#define SWIGTYPE_p_std__multisetT_Triangle_CompareByZT_0_t_t swig_types[14]
+#define SWIGTYPE_p_std__multisetT_Triangle_CompareByZT_2_t_t swig_types[15]
+#define SWIGTYPE_p_std__vectorT_Segment2_std__allocatorT_Segment2_t_t swig_types[16]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t_t swig_types[17]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[18]
+#define SWIGTYPE_p_value_type swig_types[19]
+static swig_type_info *swig_types[21];
+static swig_module_info swig_module = {swig_types, 20, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3498,6 +3505,7 @@ SWIG_AsVal_ptrdiff_t (PyObject * obj, ptrdiff_t *val)
 
 /* Includes the header in the wrapper code */
 #include "voxical.h"
+#include "geotypes.h"
 
 
 SWIGINTERN swig_type_info*
@@ -3642,6 +3650,38 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
   return SWIG_ERROR;
 }
 
+
+  #define SWIG_From_double   PyFloat_FromDouble 
+
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+SWIGINTERN int
+SWIG_AsVal_unsigned_SS_int (PyObject * obj, unsigned int *val)
+{
+  unsigned long v;
+  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v > UINT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< unsigned int >(v);
+    }
+  }  
+  return res;
+}
+
+SWIGINTERN Point2 Segment2___getitem__(Segment2 *self,unsigned int i){
+        return (*(self))[i];
+    }
 
 namespace swig {
   template <class Type>
@@ -5856,6 +5896,689 @@ fail:
   return NULL;
 }
 
+
+SWIGINTERN PyObject *_wrap_Point2_x_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point2 *arg1 = (Point2 *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Point2_x_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Point2, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point2_x_set" "', argument " "1"" of type '" "Point2 *""'"); 
+  }
+  arg1 = reinterpret_cast< Point2 * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Point2_x_set" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  if (arg1) (arg1)->x = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point2_x_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point2 *arg1 = (Point2 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Point2_x_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Point2, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point2_x_get" "', argument " "1"" of type '" "Point2 *""'"); 
+  }
+  arg1 = reinterpret_cast< Point2 * >(argp1);
+  result = (double) ((arg1)->x);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point2_y_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point2 *arg1 = (Point2 *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Point2_y_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Point2, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point2_y_set" "', argument " "1"" of type '" "Point2 *""'"); 
+  }
+  arg1 = reinterpret_cast< Point2 * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Point2_y_set" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  if (arg1) (arg1)->y = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point2_y_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point2 *arg1 = (Point2 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Point2_y_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Point2, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point2_y_get" "', argument " "1"" of type '" "Point2 *""'"); 
+  }
+  arg1 = reinterpret_cast< Point2 * >(argp1);
+  result = (double) ((arg1)->y);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Point2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point2 *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_Point2")) SWIG_fail;
+  result = (Point2 *)new Point2();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Point2, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Point2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point2 *arg1 = (Point2 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_Point2",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Point2, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Point2" "', argument " "1"" of type '" "Point2 *""'"); 
+  }
+  arg1 = reinterpret_cast< Point2 * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Point2_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Point2, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_Point3_x_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point3 *arg1 = (Point3 *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Point3_x_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Point3, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point3_x_set" "', argument " "1"" of type '" "Point3 *""'"); 
+  }
+  arg1 = reinterpret_cast< Point3 * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Point3_x_set" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  if (arg1) (arg1)->x = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point3_x_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point3 *arg1 = (Point3 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Point3_x_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Point3, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point3_x_get" "', argument " "1"" of type '" "Point3 *""'"); 
+  }
+  arg1 = reinterpret_cast< Point3 * >(argp1);
+  result = (double) ((arg1)->x);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point3_y_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point3 *arg1 = (Point3 *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Point3_y_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Point3, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point3_y_set" "', argument " "1"" of type '" "Point3 *""'"); 
+  }
+  arg1 = reinterpret_cast< Point3 * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Point3_y_set" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  if (arg1) (arg1)->y = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point3_y_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point3 *arg1 = (Point3 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Point3_y_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Point3, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point3_y_get" "', argument " "1"" of type '" "Point3 *""'"); 
+  }
+  arg1 = reinterpret_cast< Point3 * >(argp1);
+  result = (double) ((arg1)->y);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point3_z_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point3 *arg1 = (Point3 *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Point3_z_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Point3, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point3_z_set" "', argument " "1"" of type '" "Point3 *""'"); 
+  }
+  arg1 = reinterpret_cast< Point3 * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Point3_z_set" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  if (arg1) (arg1)->z = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point3_z_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point3 *arg1 = (Point3 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Point3_z_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Point3, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point3_z_get" "', argument " "1"" of type '" "Point3 *""'"); 
+  }
+  arg1 = reinterpret_cast< Point3 * >(argp1);
+  result = (double) ((arg1)->z);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Point3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point3 *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_Point3")) SWIG_fail;
+  result = (Point3 *)new Point3();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Point3, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Point3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point3 *arg1 = (Point3 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_Point3",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Point3, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Point3" "', argument " "1"" of type '" "Point3 *""'"); 
+  }
+  arg1 = reinterpret_cast< Point3 * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Point3_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Point3, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_Triangle_Sort(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Triangle *arg1 = (Triangle *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Triangle_Sort",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Triangle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Triangle_Sort" "', argument " "1"" of type '" "Triangle *""'"); 
+  }
+  arg1 = reinterpret_cast< Triangle * >(argp1);
+  (arg1)->Sort();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Triangle__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point3 *arg1 = 0 ;
+  Point3 *arg2 = 0 ;
+  Point3 *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  Triangle *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_Triangle",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_Point3,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Triangle" "', argument " "1"" of type '" "Point3 const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Triangle" "', argument " "1"" of type '" "Point3 const &""'"); 
+  }
+  arg1 = reinterpret_cast< Point3 * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Point3,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Triangle" "', argument " "2"" of type '" "Point3 const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Triangle" "', argument " "2"" of type '" "Point3 const &""'"); 
+  }
+  arg2 = reinterpret_cast< Point3 * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_Point3,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_Triangle" "', argument " "3"" of type '" "Point3 const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Triangle" "', argument " "3"" of type '" "Point3 const &""'"); 
+  }
+  arg3 = reinterpret_cast< Point3 * >(argp3);
+  result = (Triangle *)new Triangle((Point3 const &)*arg1,(Point3 const &)*arg2,(Point3 const &)*arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Triangle, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Triangle__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Triangle *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_Triangle")) SWIG_fail;
+  result = (Triangle *)new Triangle();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Triangle, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Triangle(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_Triangle__SWIG_1(self, args);
+  }
+  if (argc == 3) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_Point3, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_Point3, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_Point3, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_new_Triangle__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_Triangle'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Triangle::Triangle(Point3 const &,Point3 const &,Point3 const &)\n"
+    "    Triangle::Triangle()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Triangle_isFlipped(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Triangle *arg1 = (Triangle *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Triangle_isFlipped",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Triangle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Triangle_isFlipped" "', argument " "1"" of type '" "Triangle *""'"); 
+  }
+  arg1 = reinterpret_cast< Triangle * >(argp1);
+  result = (bool)(arg1)->isFlipped();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Triangle(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Triangle *arg1 = (Triangle *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_Triangle",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Triangle, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Triangle" "', argument " "1"" of type '" "Triangle *""'"); 
+  }
+  arg1 = reinterpret_cast< Triangle * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Triangle_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Triangle, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_Segment2__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Segment2 *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_Segment2")) SWIG_fail;
+  result = (Segment2 *)new Segment2();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Segment2, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Segment2__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Point2 *arg1 = 0 ;
+  Point2 *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Segment2 *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_Segment2",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_Point2,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Segment2" "', argument " "1"" of type '" "Point2 const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Segment2" "', argument " "1"" of type '" "Point2 const &""'"); 
+  }
+  arg1 = reinterpret_cast< Point2 * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_Point2,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Segment2" "', argument " "2"" of type '" "Point2 const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Segment2" "', argument " "2"" of type '" "Point2 const &""'"); 
+  }
+  arg2 = reinterpret_cast< Point2 * >(argp2);
+  result = (Segment2 *)new Segment2((Point2 const &)*arg1,(Point2 const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Segment2, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Segment2(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_Segment2__SWIG_0(self, args);
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_Point2, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_Point2, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_Segment2__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_Segment2'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Segment2::Segment2()\n"
+    "    Segment2::Segment2(Point2 const &,Point2 const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Segment2_Sort(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Segment2 *arg1 = (Segment2 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Segment2_Sort",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Segment2, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Segment2_Sort" "', argument " "1"" of type '" "Segment2 *""'"); 
+  }
+  arg1 = reinterpret_cast< Segment2 * >(argp1);
+  (arg1)->Sort();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Segment2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Segment2 *arg1 = (Segment2 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_Segment2",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Segment2, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Segment2" "', argument " "1"" of type '" "Segment2 *""'"); 
+  }
+  arg1 = reinterpret_cast< Segment2 * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Segment2___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Segment2 *arg1 = (Segment2 *) 0 ;
+  unsigned int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Point2 result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Segment2___getitem__",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_Segment2, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Segment2___getitem__" "', argument " "1"" of type '" "Segment2 *""'"); 
+  }
+  arg1 = reinterpret_cast< Segment2 * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Segment2___getitem__" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  result = Segment2___getitem__(arg1,arg2);
+  resultobj = SWIG_NewPointerObj((new Point2(static_cast< const Point2& >(result))), SWIGTYPE_p_Point2, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Segment2_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Segment2, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
 
 SWIGINTERN PyObject *_wrap_VSeg2_iterator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -9742,6 +10465,32 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SwigPyIterator___sub__", _wrap_SwigPyIterator___sub__, METH_VARARGS, NULL},
 	 { (char *)"SwigPyIterator_swigregister", SwigPyIterator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"makeslice", _wrap_makeslice, METH_VARARGS, NULL},
+	 { (char *)"Point2_x_set", _wrap_Point2_x_set, METH_VARARGS, NULL},
+	 { (char *)"Point2_x_get", _wrap_Point2_x_get, METH_VARARGS, NULL},
+	 { (char *)"Point2_y_set", _wrap_Point2_y_set, METH_VARARGS, NULL},
+	 { (char *)"Point2_y_get", _wrap_Point2_y_get, METH_VARARGS, NULL},
+	 { (char *)"new_Point2", _wrap_new_Point2, METH_VARARGS, NULL},
+	 { (char *)"delete_Point2", _wrap_delete_Point2, METH_VARARGS, NULL},
+	 { (char *)"Point2_swigregister", Point2_swigregister, METH_VARARGS, NULL},
+	 { (char *)"Point3_x_set", _wrap_Point3_x_set, METH_VARARGS, NULL},
+	 { (char *)"Point3_x_get", _wrap_Point3_x_get, METH_VARARGS, NULL},
+	 { (char *)"Point3_y_set", _wrap_Point3_y_set, METH_VARARGS, NULL},
+	 { (char *)"Point3_y_get", _wrap_Point3_y_get, METH_VARARGS, NULL},
+	 { (char *)"Point3_z_set", _wrap_Point3_z_set, METH_VARARGS, NULL},
+	 { (char *)"Point3_z_get", _wrap_Point3_z_get, METH_VARARGS, NULL},
+	 { (char *)"new_Point3", _wrap_new_Point3, METH_VARARGS, NULL},
+	 { (char *)"delete_Point3", _wrap_delete_Point3, METH_VARARGS, NULL},
+	 { (char *)"Point3_swigregister", Point3_swigregister, METH_VARARGS, NULL},
+	 { (char *)"Triangle_Sort", _wrap_Triangle_Sort, METH_VARARGS, NULL},
+	 { (char *)"new_Triangle", _wrap_new_Triangle, METH_VARARGS, NULL},
+	 { (char *)"Triangle_isFlipped", _wrap_Triangle_isFlipped, METH_VARARGS, NULL},
+	 { (char *)"delete_Triangle", _wrap_delete_Triangle, METH_VARARGS, NULL},
+	 { (char *)"Triangle_swigregister", Triangle_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_Segment2", _wrap_new_Segment2, METH_VARARGS, NULL},
+	 { (char *)"Segment2_Sort", _wrap_Segment2_Sort, METH_VARARGS, NULL},
+	 { (char *)"delete_Segment2", _wrap_delete_Segment2, METH_VARARGS, NULL},
+	 { (char *)"Segment2___getitem__", _wrap_Segment2___getitem__, METH_VARARGS, NULL},
+	 { (char *)"Segment2_swigregister", Segment2_swigregister, METH_VARARGS, NULL},
 	 { (char *)"VSeg2_iterator", _wrap_VSeg2_iterator, METH_VARARGS, NULL},
 	 { (char *)"VSeg2___nonzero__", _wrap_VSeg2___nonzero__, METH_VARARGS, NULL},
 	 { (char *)"VSeg2___bool__", _wrap_VSeg2___bool__, METH_VARARGS, NULL},
@@ -9816,7 +10565,10 @@ static PyMethodDef SwigMethods[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static swig_type_info _swigt__p_Point2 = {"_p_Point2", "Point2 *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Point3 = {"_p_Point3", "Point3 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Segment2 = {"_p_Segment2", "std::vector< Segment2 >::value_type *|Segment2 *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Triangle = {"_p_Triangle", "Triangle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
@@ -9825,13 +10577,20 @@ static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0
 static swig_type_info _swigt__p_std__allocatorT_Segment2_t = {"_p_std__allocatorT_Segment2_t", "std::allocator< Segment2 > *|std::vector< Segment2 >::allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t = {"_p_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t", "std::allocator< std::vector< Segment2,std::allocator< Segment2 > > > *|std::vector< std::vector< Segment2 > >::allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__multisetT_Segment2_CompareByYT_0_t_t = {"_p_std__multisetT_Segment2_CompareByYT_0_t_t", "std::multiset< Segment2,CompareByY< 0 > > *|yMinSegmentSet *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__multisetT_Segment2_CompareByYT_1_t_t = {"_p_std__multisetT_Segment2_CompareByYT_1_t_t", "std::multiset< Segment2,CompareByY< 1 > > *|yMaxSegmentSet *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__multisetT_Triangle_CompareByZT_0_t_t = {"_p_std__multisetT_Triangle_CompareByZT_0_t_t", "std::multiset< Triangle,CompareByZ< 0 > > *|zMinTriangleSet *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__multisetT_Triangle_CompareByZT_2_t_t = {"_p_std__multisetT_Triangle_CompareByZT_2_t_t", "std::multiset< Triangle,CompareByZ< 2 > > *|zMaxTriangleSet *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_Segment2_std__allocatorT_Segment2_t_t = {"_p_std__vectorT_Segment2_std__allocatorT_Segment2_t_t", "std::vector< Segment2 > *|std::vector< Segment2,std::allocator< Segment2 > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t_t = {"_p_std__vectorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t_t", "std::vector< std::vector< Segment2 > > *|std::vector< std::vector< Segment2,std::allocator< Segment2 > >,std::allocator< std::vector< Segment2,std::allocator< Segment2 > > > > *|std::vector< std::vector< Segment2,std::allocator< Segment2 > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_Point2,
+  &_swigt__p_Point3,
   &_swigt__p_Segment2,
+  &_swigt__p_Triangle,
   &_swigt__p_allocator_type,
   &_swigt__p_char,
   &_swigt__p_difference_type,
@@ -9840,13 +10599,20 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__allocatorT_Segment2_t,
   &_swigt__p_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t,
   &_swigt__p_std__invalid_argument,
+  &_swigt__p_std__multisetT_Segment2_CompareByYT_0_t_t,
+  &_swigt__p_std__multisetT_Segment2_CompareByYT_1_t_t,
+  &_swigt__p_std__multisetT_Triangle_CompareByZT_0_t_t,
+  &_swigt__p_std__multisetT_Triangle_CompareByZT_2_t_t,
   &_swigt__p_std__vectorT_Segment2_std__allocatorT_Segment2_t_t,
   &_swigt__p_std__vectorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t_t,
   &_swigt__p_swig__SwigPyIterator,
   &_swigt__p_value_type,
 };
 
+static swig_cast_info _swigc__p_Point2[] = {  {&_swigt__p_Point2, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Point3[] = {  {&_swigt__p_Point3, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Segment2[] = {  {&_swigt__p_Segment2, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Triangle[] = {  {&_swigt__p_Triangle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -9855,13 +10621,20 @@ static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0}
 static swig_cast_info _swigc__p_std__allocatorT_Segment2_t[] = {  {&_swigt__p_std__allocatorT_Segment2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t[] = {  {&_swigt__p_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__invalid_argument[] = {  {&_swigt__p_std__invalid_argument, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__multisetT_Segment2_CompareByYT_0_t_t[] = {  {&_swigt__p_std__multisetT_Segment2_CompareByYT_0_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__multisetT_Segment2_CompareByYT_1_t_t[] = {  {&_swigt__p_std__multisetT_Segment2_CompareByYT_1_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__multisetT_Triangle_CompareByZT_0_t_t[] = {  {&_swigt__p_std__multisetT_Triangle_CompareByZT_0_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__multisetT_Triangle_CompareByZT_2_t_t[] = {  {&_swigt__p_std__multisetT_Triangle_CompareByZT_2_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_Segment2_std__allocatorT_Segment2_t_t[] = {  {&_swigt__p_std__vectorT_Segment2_std__allocatorT_Segment2_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t_t[] = {  {&_swigt__p_std__vectorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_Point2,
+  _swigc__p_Point3,
   _swigc__p_Segment2,
+  _swigc__p_Triangle,
   _swigc__p_allocator_type,
   _swigc__p_char,
   _swigc__p_difference_type,
@@ -9870,6 +10643,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__allocatorT_Segment2_t,
   _swigc__p_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t,
   _swigc__p_std__invalid_argument,
+  _swigc__p_std__multisetT_Segment2_CompareByYT_0_t_t,
+  _swigc__p_std__multisetT_Segment2_CompareByYT_1_t_t,
+  _swigc__p_std__multisetT_Triangle_CompareByZT_0_t_t,
+  _swigc__p_std__multisetT_Triangle_CompareByZT_2_t_t,
   _swigc__p_std__vectorT_Segment2_std__allocatorT_Segment2_t_t,
   _swigc__p_std__vectorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_std__allocatorT_std__vectorT_Segment2_std__allocatorT_Segment2_t_t_t_t,
   _swigc__p_swig__SwigPyIterator,

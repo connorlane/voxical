@@ -158,6 +158,110 @@ SwigPyIterator_swigregister(SwigPyIterator)
 def makeslice(filepath):
     return _voxical.makeslice(filepath)
 makeslice = _voxical.makeslice
+class Point2(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Point2, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Point2, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["x"] = _voxical.Point2_x_set
+    __swig_getmethods__["x"] = _voxical.Point2_x_get
+    if _newclass:
+        x = _swig_property(_voxical.Point2_x_get, _voxical.Point2_x_set)
+    __swig_setmethods__["y"] = _voxical.Point2_y_set
+    __swig_getmethods__["y"] = _voxical.Point2_y_get
+    if _newclass:
+        y = _swig_property(_voxical.Point2_y_get, _voxical.Point2_y_set)
+
+    def __init__(self):
+        this = _voxical.new_Point2()
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _voxical.delete_Point2
+    __del__ = lambda self: None
+Point2_swigregister = _voxical.Point2_swigregister
+Point2_swigregister(Point2)
+
+class Point3(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Point3, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Point3, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["x"] = _voxical.Point3_x_set
+    __swig_getmethods__["x"] = _voxical.Point3_x_get
+    if _newclass:
+        x = _swig_property(_voxical.Point3_x_get, _voxical.Point3_x_set)
+    __swig_setmethods__["y"] = _voxical.Point3_y_set
+    __swig_getmethods__["y"] = _voxical.Point3_y_get
+    if _newclass:
+        y = _swig_property(_voxical.Point3_y_get, _voxical.Point3_y_set)
+    __swig_setmethods__["z"] = _voxical.Point3_z_set
+    __swig_getmethods__["z"] = _voxical.Point3_z_get
+    if _newclass:
+        z = _swig_property(_voxical.Point3_z_get, _voxical.Point3_z_set)
+
+    def __init__(self):
+        this = _voxical.new_Point3()
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _voxical.delete_Point3
+    __del__ = lambda self: None
+Point3_swigregister = _voxical.Point3_swigregister
+Point3_swigregister(Point3)
+
+class Triangle(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Triangle, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Triangle, name)
+    __repr__ = _swig_repr
+
+    def Sort(self):
+        return _voxical.Triangle_Sort(self)
+
+    def __init__(self, *args):
+        this = _voxical.new_Triangle(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def isFlipped(self):
+        return _voxical.Triangle_isFlipped(self)
+    __swig_destroy__ = _voxical.delete_Triangle
+    __del__ = lambda self: None
+Triangle_swigregister = _voxical.Triangle_swigregister
+Triangle_swigregister(Triangle)
+
+class Segment2(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Segment2, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Segment2, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _voxical.new_Segment2(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def Sort(self):
+        return _voxical.Segment2_Sort(self)
+    __swig_destroy__ = _voxical.delete_Segment2
+    __del__ = lambda self: None
+
+    def __getitem__(self, i):
+        return _voxical.Segment2___getitem__(self, i)
+Segment2_swigregister = _voxical.Segment2_swigregister
+Segment2_swigregister(Segment2)
+
 class VSeg2(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, VSeg2, name, value)
