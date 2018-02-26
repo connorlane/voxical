@@ -22,7 +22,7 @@ int main()
 	while(nextTriangleToBeExamined != sortedTriangles.end())
 	{
 		// TODO: Start at the first valid slice automatically
-		double zSlice = sliceIndex * 0.01;
+		double zSlice = sliceIndex * 1;
 		Triangle dummyTriangle({0,0,zSlice + 0.00001},{0,0,zSlice},{0,0, zSlice - 0.00001});
 
 		// Find new triangles with zMin equal to or below current zSlice
@@ -53,8 +53,8 @@ int main()
 			//std::cout << Slice(*i, zSlice) << std::endl;
 		}
 
-		//rasterizer.Rasterize(segments);
-		slices.push_back(std::move(segments));		
+		rasterizer.Rasterize(segments);
+		//slices.push_back(std::move(segments));		
 
 		sliceIndex++;
 

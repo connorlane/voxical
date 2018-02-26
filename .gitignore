@@ -2,5 +2,6 @@
 !triangle.o
 *.x
 .*
+*.cmake
 CMakeFiles
 !.gitignore

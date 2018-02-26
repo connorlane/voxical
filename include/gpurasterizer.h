@@ -35,7 +35,7 @@ public:
 		if (!glfwInit())
 			 exit(EXIT_FAILURE);
 
-		window = glfwCreateWindow(150, 150, "Voxelizer", NULL, NULL);
+		window = glfwCreateWindow(1024, 1024, "Voxelizer", NULL, NULL);
 		if (!window)
 		{
 			 glfwTerminate();
