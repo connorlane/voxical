@@ -9,8 +9,6 @@
 //#include <GL/gl.h>
 //#include <GL/glu.h> 
 
-#include <triangle.h>
-
 // DEBUG
 #include <iostream>
 
@@ -51,12 +49,6 @@ public:
 
 void Rasterize(std::vector<Segment2> segments)
 {
-	struct triangulateio in, mid, out, vorout;
-
-	in.numberofsegments = segments.size();
-	in.numberofholes = 0;
-	in.numberofregions = 0;
-
 	//unsigned char buffer[100*100*3];
        int width, height;
 
@@ -71,7 +63,6 @@ void Rasterize(std::vector<Segment2> segments)
        //glLoadIdentity();
        //glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
 
-	glColor3f(0.0,0.0,1.0);
        glBegin(GL_LINES);
         	 	for(std::vector<Segment2>::iterator i = segments.begin(); i != segments.end(); i++)	
         	 	{

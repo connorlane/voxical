@@ -59,7 +59,7 @@ def plotLine(pairOfPoints, ax):
 #				 [ float(sys.argv[4]), float(sys.argv[5]), float(sys.argv[6])],
 #				 [ float(sys.argv[7]), float(sys.argv[8]), float(sys.argv[9])] ]
 
-mesh = mesh.Mesh.from_file('yoda.stl')
+mesh = mesh.Mesh.from_file('models/yoda.stl')
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')

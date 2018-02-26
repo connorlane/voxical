@@ -2,12 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-#include <geotypes.h>
 
 #include "triangulate.h"
 
 static const float EPSILON=0.0000000001f;
-//static const float EPSILON=0.000000000f
 
 float Triangulate::Area(const Vector2dVector &contour)
 {
@@ -15,7 +13,8 @@ float Triangulate::Area(const Vector2dVector &contour)
   int n = contour.size();
 
   float A=0.0f;
-for(int p=n-1,q=0; q<n; p=q++)
+
+  for(int p=n-1,q=0; q<n; p=q++)
   {
     A+= contour[p].GetX()*contour[q].GetY() - contour[q].GetX()*contour[p].GetY();
   }
@@ -62,7 +61,7 @@ bool Triangulate::Snip(const Vector2dVector &contour,int u,int v,int w,int n,int
   Cx = contour[V[w]].GetX();
   Cy = contour[V[w]].GetY();
 
-  //if ( EPSILON > (((Bx-Ax)*(Cy-Ay)) - ((By-Ay)*(Cx-Ax))) ) return false;
+  if ( EPSILON > (((Bx-Ax)*(Cy-Ay)) - ((By-Ay)*(Cx-Ax))) ) return false;
 
   for (p=0;p<n;p++)
   {
@@ -102,7 +101,6 @@ bool Triangulate::Process(const Vector2dVector &contour,Vector2dVector &result)
     if (0 >= (count--))
     {
       //** Triangulate: ERROR - probable bad polygon!
-	    std::cout << "Bad Poly!" << std::endl;
       return false;
     }
 

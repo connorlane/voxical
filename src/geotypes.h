@@ -5,9 +5,11 @@
 #include <cassert>
 #include <algorithm>
 #include <iostream>
-struct Point2 {
-	double x;
-	double y;
+
+struct Point2 
+{
+	float x;
+	float y;
 
 	Point2& operator=(const Point2& src)
 	{
@@ -25,9 +27,9 @@ std::ostream& operator<<(std::ostream& os, const Point2& p)
 
 struct Point3 
 {
-	double x;
-	double y;
-	double z;
+	float x;
+	float y;
+	float z;
 };
 
 std::ostream& operator<<(std::ostream& os, const Point3& p)
@@ -64,16 +66,16 @@ class Triangle
 			if (m_verteces[0].z > m_verteces[1].z)
 			{
 				std::swap(m_verteces[0], m_verteces[1]);
+				m_flipped = ~m_flipped;
+			}
+			if (m_verteces[1].z > m_verteces[2].z)
+			{
+				std::swap(m_verteces[1], m_verteces[2]);
 				m_flipped = !m_flipped;
 			}
 			if (m_verteces[0].z > m_verteces[2].z)
 			{
 				std::swap(m_verteces[0], m_verteces[2]);
-				m_flipped = !m_flipped;
-			}
-			if (m_verteces[1].z > m_verteces[2].z)
-			{
-				std::swap(m_verteces[1], m_verteces[2]);
 				m_flipped = !m_flipped;
 			}
 		}
@@ -160,15 +162,6 @@ struct CompareByZ
 	}
 };
 
-template <int vertex>
-struct CompareByY
-{
-   bool operator() (const Triangle& a, const Triangle& b) const
-	{
-		return (a[vertex].y < b[vertex].y);
-	}
-};
-
 typedef std::multiset<Triangle, CompareByZ<0> > zMinTriangleSet;
 typedef std::multiset<Triangle, CompareByZ<2> > zMaxTriangleSet;
 
@@ -176,4 +169,3 @@ typedef std::multiset<Triangle, CompareByY<0> > yMinSegmentSet;
 typedef std::multiset<Triangle, CompareByY<1> > yMaxSegmentSet;
 
 #endif
-

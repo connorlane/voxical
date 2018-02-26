@@ -1,5 +1,6 @@
-*.o
+**/*.o
 !triangle.o
 *.x
 .*
+CMakeFiles
 !.gitignore
