@@ -32,12 +32,15 @@ public:
 	GpuRasterizer()
 	{
 		glfwSetErrorCallback(error_callback);
-		if (!glfwInit())
+		if (!glfwInit()) {
+			 std::cout << "glfwInit Failure";
 			 exit(EXIT_FAILURE);
+		}
 
-		window = glfwCreateWindow(1024, 1024, "Voxelizer", NULL, NULL);
+		window = glfwCreateWindow(1000, 1000, "Voxelizer", NULL, NULL);
 		if (!window)
 		{
+			 std::cout << "glfwCreateWindow Failure";
 			 glfwTerminate();
 			 exit(EXIT_FAILURE);
 		}
@@ -47,7 +50,7 @@ public:
 		glfwSetKeyCallback(window, key_callback);		
 	}
 
-void Rasterize(std::vector<Segment2> segments)
+void Rasterize(PointBuffer& pb, std::vector<std::vector<int> >& loops)
 {
 	//unsigned char buffer[100*100*3];
        int width, height;
@@ -63,12 +66,15 @@ void Rasterize(std::vector<Segment2> segments)
        //glLoadIdentity();
        //glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
 
-       glBegin(GL_LINES);
-        	 	for(std::vector<Segment2>::iterator i = segments.begin(); i != segments.end(); i++)	
-        	 	{
-        	 		glVertex2f((*i)[0].x/32, (*i)[0].y/32);
-        	 		glVertex2f((*i)[1].x/32, (*i)[1].y/32);
-        	 	}
+        glBegin(GL_LINES);
+			for (auto indices = loops.begin(); indices != loops.end(); indices++) {
+				auto prev_it = indices->begin();
+				for(auto it = std::next(prev_it); it != indices->end(); it++) {
+					glVertex2f(pb[*prev_it].x/34, pb[*prev_it].y/34);
+					glVertex2f(pb[*it].x/34, pb[*it].y/34);
+					prev_it = it;
+				}
+			}
         glEnd();
 
        //glBegin(GL_TRIANGLES);

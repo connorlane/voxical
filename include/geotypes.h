@@ -5,6 +5,7 @@
 #include <cassert>
 #include <algorithm>
 #include <iostream>
+
 struct Point2 {
 	double x;
 	double y;
@@ -35,58 +36,58 @@ std::ostream& operator<<(std::ostream& os, const Point3& p)
 	return os << '{' << p.x << ", " << p.y << ", " << p.z << '}';
 }
 
+typedef std::vector<Point3> VertexBuffer;
+
 class Triangle
 {
 	private:
 		bool m_flipped;
-		Point3 m_verteces[3];
+		int m_vertices[3];
 
 	public:
-		Point3 const& operator[](const int index) const
+		int const& operator[](const int index) const
 		{
 			// In debug version, make sure index in in range
 			assert(index < 3 && index >= 0);
 
-			return m_verteces[index];	
+			return m_vertices[index];	
 		}
 
-		Point3& operator[](const int index)
+		int& operator[](const int index)
 		{
 			// In debug version, make sure index in in range
 			assert(index < 3 && index >= 0);
 
-			return m_verteces[index];	
-		}
-
-		void Sort()
-		{
-			// Fast sort by Z
-			if (m_verteces[0].z > m_verteces[1].z)
-			{
-				std::swap(m_verteces[0], m_verteces[1]);
-				m_flipped = !m_flipped;
-			}
-			if (m_verteces[0].z > m_verteces[2].z)
-			{
-				std::swap(m_verteces[0], m_verteces[2]);
-				m_flipped = !m_flipped;
-			}
-			if (m_verteces[1].z > m_verteces[2].z)
-			{
-				std::swap(m_verteces[1], m_verteces[2]);
-				m_flipped = !m_flipped;
-			}
-		}
-
-		Triangle(const Point3& a, const Point3& b, const Point3& c) :
-			m_flipped(false),
-			m_verteces{a, b, c}
-		{
+			return m_vertices[index];	
 		}
 
 		Triangle() :
-			m_flipped(false)
+			m_flipped(false) {
+		}
+
+		void Sort(VertexBuffer& vb)
 		{
+			// Fast sort by Z
+			if (vb[m_vertices[0]].z > vb[m_vertices[1]].z)
+			{
+				std::swap(m_vertices[0], m_vertices[1]);
+				m_flipped = !m_flipped;
+			}
+			if (vb[m_vertices[0]].z > vb[m_vertices[2]].z)
+			{
+				std::swap(m_vertices[0], m_vertices[2]);
+				m_flipped = !m_flipped;
+			}
+			if (vb[m_vertices[1]].z > vb[m_vertices[2]].z)
+			{
+				std::swap(m_vertices[1], m_vertices[2]);
+				m_flipped = !m_flipped;
+			}
+		} 
+
+		Triangle(const int& a, const int& b, const int& c) :
+			m_flipped(false),
+			m_vertices{a, b, c} {
 		}
 
 		bool isFlipped()
@@ -100,9 +101,9 @@ class Triangle
 
 std::ostream& operator<<(std::ostream& os, const Triangle& t)
 {
-	return os << "[ " << t.m_verteces[0] << ",\n"
-				 << "  " << t.m_verteces[1] << ",\n"
-	          << "  " << t.m_verteces[2] << " ]";
+	return os << "[ " << t.m_vertices[0] << ",\n"
+			  << "  " << t.m_vertices[1] << ",\n"
+	          << "  " << t.m_vertices[2] << " ]";
 }
 
 //typedef struct Point3[2] Segment3;
@@ -152,37 +153,25 @@ std::ostream& operator<<(std::ostream& os, const Segment2& s)
 }
 
 template <int vertex>
-struct CompareByZ
+class CompareByZ
 {
-   bool operator() (const Triangle& a, const Triangle& b) const
-	{
-		return (a[vertex].z < b[vertex].z);
-	}
-};
+	private:
+		VertexBuffer& m_vertices;
 
-template <int vertex>
-struct CompareByY
-{
-   bool operator() (const Segment2& a, const Segment2& b) const
-	{
-		return (a[vertex].y < b[vertex].y);
-	}
-};
+	public:
+		CompareByZ(VertexBuffer& indices) : m_vertices(indices) {
+		}
 
-template <int vertex>
-struct CompareByX
-{
-   bool operator() (const Segment2& a, const Segment2& b) const
-	{
-		return (a[vertex].x < b[vertex].x);
-	}
+		bool operator() (const Triangle& a, const Triangle& b) const
+		{
+			return (m_vertices[a[vertex]].z < m_vertices[b[vertex]].z);
+		}
 };
 
 typedef std::multiset<Triangle, CompareByZ<0> > zMinTriangleSet;
 typedef std::multiset<Triangle, CompareByZ<2> > zMaxTriangleSet;
 
-typedef std::multiset<Segment2, CompareByY<0> > yMinSegmentSet;
-typedef std::multiset<Segment2, CompareByY<1> > yMaxSegmentSet;
+typedef std::vector<Point2> PointBuffer;
+typedef std::vector<std::pair<int, int>> SegmentLinkSet;
 
 #endif
-

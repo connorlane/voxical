@@ -91,7 +91,7 @@ class StlParser
 					// Skip the normal vector
 					file.seekg(12, std::ios::cur);
 
-					// Read the three verteces
+					// Read the three vertices
 					for (int vertex = 0; vertex < 3; vertex++)
 					{
 						file.read((char*)&x, 4);
