@@ -1,5 +1,0 @@
-
-Mesh("yoda.stl");
-
-Mesh.Slice(0.1);
-
